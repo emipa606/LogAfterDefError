@@ -1,7 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-
   <LogAfterDefError.Settings>Def錯誤日誌</LogAfterDefError.Settings>
   <LogAfterDefError.Settings.Enabled>啟用</LogAfterDefError.Settings.Enabled>
-  
 </LanguageData>

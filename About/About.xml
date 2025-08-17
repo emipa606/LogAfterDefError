@@ -1,17 +1,65 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-	<name>Log After Def Error</name>
-	<author>ordpus</author>
-	<supportedVersions>
-		<li>1.5</li>
-	</supportedVersions>
-	<packageId>ordpus.logafterdeferror</packageId>
-	<description>Log the defname and def xml file path so that you know that the hell is reporting warning information.</description>
-	<modDependencies>
-		<li>
-			<packageId>brrainz.harmony</packageId>
-			<displayName>Harmony</displayName>
-			<steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
-		</li>
-	</modDependencies>
+  <name>Log After Def Error (Continued)</name>
+  <packageId>Mlie.LogAfterDefError</packageId>
+  <author>ordpus</author>
+  <url>https://github.com/emipa606/LogAfterDefError</url>
+  <supportedVersions>
+    <li>1.5</li>
+    <li>1.6</li>
+  </supportedVersions>
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+      <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>brrainz.harmony</li>
+  </loadAfter>
+  <description>[img]https://i.imgur.com/buuPQel.png[/img]
+Update of ordpuss mod https://steamcommunity.com/sharedfiles/filedetails/?id=3291238448
+
+[img]https://i.imgur.com/pufA0kM.png[/img]
+
+[table]
+    [tr][td][url=https://dsc.gg/mlie][img]https://i.imgur.com/zdzzBrc.png[/img][/url][/td] [td][url=https://github.com/emipa606/LogAfterDefError][img]https://i.imgur.com/kTkpTOE.png[/img][/url][/td]
+    [/tr]
+    [tr]
+        [td][img]https://i.imgur.com/WjDSfUn.png[/img][/td]
+        [td][img]https://i.imgur.com/h5VwTNL.png[/img][/td]
+    [/tr]
+[/table]
+	
+[img]https://i.imgur.com/Z4GOv8H.png[/img]
+Haha, look familiar? Parsed xxx as int are happening all over the rimworld, right now!
+Unless you make the most import decision in your life.🫰
+Prove to yourself that you have the strength of courage to be bugfree. ⛑️
+Join... the LADE👍
+
+Print the details of the def if there is error logged during parsing xml into c# objects, extremely helpful to locate xml errors as it only gives very specific parsing exception in vanilla.
+
+The Info structure is [Def Error] defName:modName/pathToXml/xmlFile.xml
+
+Issues goes here: https://github.com/Rimworld-Misc-Mods/LogAfterDefError/issues
+
+Discord (In case you are not familiar with git): https://discord.gg/Apr4tM96
+
+log file "Player.log" should be at parent folder of your save folder. Follow https://rimworldwiki.com/wiki/Save_file to find it.
+
+Or you can just post Hugslib log, instruction is here https://steamcommunity.com/workshop/filedetails/?id=818773962
+
+[img]https://i.imgur.com/PwoNOj4.png[/img]
+[list]
+[*] See if the error persists if you just have this mod and its requirements active.
+[*] If not, try adding your other mods until it happens again.
+[*] Post your error-log using the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404]Log Uploader[/url] and command Ctrl+F12
+[*] For best support, please use the Discord-channel for error-reporting.
+[*] Do not report errors by making a discussion-thread, I get no notification of that.
+[*] If you have the solution for a problem, please post it to the GitHub repository.
+[*] Use [url=https://github.com/RimSort/RimSort/releases/latest]RimSort[/url] to sort your mods
+[/list]</description>
+  <modVersion IgnoreIfNoMatchingField="True">1.6.1</modVersion>
 </ModMetaData>
