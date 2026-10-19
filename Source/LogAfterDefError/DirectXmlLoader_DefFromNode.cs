@@ -53,12 +53,12 @@ public static class DirectXmlLoader_DefFromNode
         }
 
         var mod = loadingAsset?.mod;
-        if ((int)messageCountFieldInfo.GetValue(null) > 900)
+        if ((int)(messageCountFieldInfo.GetValue(null) ?? 0) > 900)
         {
             Log.ResetMessageCount();
         }
 
         Log.Message(
-            $"[Def Error]: {__result.defName}{Environment.NewLine}{mod?.Name}{loadingAsset?.FullFilePath?.Replace(mod?.RootDir, "")}");
+            $"[Def Error]: {__result.defName}{Environment.NewLine}{mod?.Name}{loadingAsset?.FullFilePath?.Replace(mod?.RootDir ?? "Unknown", "")}");
     }
 }
