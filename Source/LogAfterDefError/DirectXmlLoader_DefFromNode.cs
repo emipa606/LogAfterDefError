@@ -8,9 +8,8 @@ namespace LogAfterDefError;
 [HarmonyPatch]
 public static class DirectXmlLoader_DefFromNode
 {
-    private static readonly FieldInfo messageQueueFieldInfo = AccessTools.Field(typeof(Log), "messageQueue");
-    private static readonly FieldInfo messageCountFieldInfo = AccessTools.Field(typeof(Log), "messageCount");
-    private static readonly FieldInfo lastMessageFieldInfo = AccessTools.Field(typeof(LogMessageQueue), "lastMessage");
+    [ThreadStatic] private static int currentDefLoadDepth;
+    [ThreadStatic] private static LoadableXmlAsset currentLoadingAsset;
 
     public static MethodBase[] TargetMethods()
     {
@@ -21,44 +20,26 @@ public static class DirectXmlLoader_DefFromNode
         ];
     }
 
-    public static void Prefix(ref LogMessage __state)
+    public static void Prefix(LoadableXmlAsset loadingAsset, out LoadableXmlAsset __state)
     {
-        var messageQueue = (LogMessageQueue)messageQueueFieldInfo.GetValue(null);
-        if (messageQueue == null)
+        __state = currentLoadingAsset;
+        if (loadingAsset != null)
         {
-            __state = null;
-            return;
+            currentLoadingAsset = loadingAsset;
         }
 
-        __state = (LogMessage)lastMessageFieldInfo.GetValue(messageQueue);
+        currentDefLoadDepth++;
     }
 
-    public static void Postfix(Def __result, LoadableXmlAsset loadingAsset, LogMessage __state)
+    public static void Finalizer(LoadableXmlAsset __state)
     {
-        if (__result == null || !LogAfterDefErrorModSettings.Enabled)
-        {
-            return;
-        }
+        currentDefLoadDepth = Math.Max(0, currentDefLoadDepth - 1);
+        currentLoadingAsset = __state;
+    }
 
-        var messageQueue = (LogMessageQueue)messageQueueFieldInfo.GetValue(null);
-        if (messageQueue == null)
-        {
-            return;
-        }
-
-        var lastMessage = (LogMessage)lastMessageFieldInfo.GetValue(messageQueue);
-        if (lastMessage == __state)
-        {
-            return;
-        }
-
-        var mod = loadingAsset?.mod;
-        if ((int)(messageCountFieldInfo.GetValue(null) ?? 0) > 900)
-        {
-            Log.ResetMessageCount();
-        }
-
-        Log.Message(
-            $"[Def Error]: {__result.defName}{Environment.NewLine}{mod?.Name}{loadingAsset?.FullFilePath?.Replace(mod?.RootDir ?? "Unknown", "")}");
+    public static bool TryGetCurrentLoadingAsset(out LoadableXmlAsset loadingAsset)
+    {
+        loadingAsset = currentLoadingAsset;
+        return currentDefLoadDepth > 0 && loadingAsset != null;
     }
 }

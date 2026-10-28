@@ -6,10 +6,10 @@
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
     <DebugType>None</DebugType>
     <LangVersion>latest</LangVersion>
-  <FileVersion>1.7.0</FileVersion><GenerateDependencyFile>false</GenerateDependencyFile><AssemblyVersion>1.7</AssemblyVersion><Product>Log After Def Error (Continued)</Product><Copyright>© ordpus 2026 - MIT License</Copyright><Nullable>warnings</Nullable></PropertyGroup>
+  <FileVersion>1.7.1</FileVersion><GenerateDependencyFile>false</GenerateDependencyFile><AssemblyVersion>1.7</AssemblyVersion><Product>Log After Def Error (Continued)</Product><Copyright>© ordpus 2026 - MIT License</Copyright><Nullable>warnings</Nullable></PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Krafs.Rimworld.Ref">
-      <Version>1.7.4982-unstable</Version>
+      <Version>1.7.4990-unstable</Version>
       <ExcludeAssets>runtime</ExcludeAssets>
       <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
